@@ -55,6 +55,9 @@ public class GamePalindrome {
                 return true;
             }
         }else{
+            IOData.outputMessage("Слово или фраза не является палиндромом! \nБаллы не начисляются!");
+            PlayerBase.updateBase(player); // добавлляем игрока в базу даже если оон предложил неверный палиндром
+            IOData.outputMessage("Попробуйте еще раз!");
             return false;
         }
     }
@@ -66,8 +69,8 @@ public class GamePalindrome {
         player.setScore(player.getScore() + palindrome.getScore());     //обновляем счет игрока
         PlayerBase.updateBase(player);                                  //обновляем результаты игрока
         PalindromeBase.updateBase(palindrome);                          //добавляем палиндром в базу
-        IOData.outputMessage("Начислено " + palindrome.getScore());
-        IOData.outputMessage("Общий счет игрока " + player.getName() + " " + player.getScore() + " баллов");
+        IOData.outputMessage("Начислено " + palindrome.getScore()
+                + "\nОбщий счет игрока " + player.getName() + " " + player.getScore());
     }
 
     /**
