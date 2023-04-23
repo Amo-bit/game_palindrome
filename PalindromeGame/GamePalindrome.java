@@ -45,8 +45,8 @@ public class GamePalindrome {
     * Метод для проверки слова или фразы на полиндром и использовались ли уже в игре ранее
     */
     private static boolean  checkText(){
-        if(Palindrome.checkPalindrome(text)){                                    //проверяем является ли слово или фраза полиндромом
-            palindrome = Palindrome.createPalindrome(text);                     //создаем палиндром и считаем баллы за него
+        if((palindrome = Palindrome.createPalindrome(text)) != null){           //проверяем является ли слово или фраза полиндромом и
+                                                                                // создаем палиндром и считаем баллы за него
             if(PalindromeBase.checkExistencePalindromeInBase(palindrome)){      //проверяем есть ли палиндром в базе
                 IOData.outputMessage("Слово или фраза ранее использовались в игре!");
                 return false;
@@ -56,7 +56,7 @@ public class GamePalindrome {
             }
         }else{
             IOData.outputMessage("Слово или фраза не является палиндромом! \nБаллы не начисляются!");
-            PlayerBase.updateBase(player); // добавлляем игрока в базу даже если оон предложил неверный палиндром
+            PlayerBase.updateBase(player); // добавлляем игрока в базу даже если он предложил неверный палиндром
             IOData.outputMessage("Попробуйте еще раз!");
             return false;
         }

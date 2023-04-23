@@ -26,7 +26,11 @@ public class Palindrome {
     public static Palindrome createPalindrome(String text){
 
         text = text.replaceAll(" ", "");
-        return new Palindrome(text, countPoints(text));
+        if(checkPalindrome(text)){
+            return new Palindrome(text, countPoints(text));
+        }else{
+            return null;
+        }
     }
 
     /**
@@ -34,10 +38,9 @@ public class Palindrome {
      * @param text
      * @return
      */
-    public static boolean checkPalindrome(String text){
+    private static boolean checkPalindrome(String text){
 
         if(text.isEmpty()) return false;
-        text = text.replaceAll(" ", "");
         StringBuilder sb = new StringBuilder(text);
 
         if(text.equalsIgnoreCase(sb.reverse().toString())){
